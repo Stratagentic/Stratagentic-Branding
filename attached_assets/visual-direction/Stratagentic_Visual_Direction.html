@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stratagentic — Visual Direction v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue:      #0056FF;
+    --neon:      #3385FF;
+    --lt-blue:   #B3D4FF;
+    --black:     #0A0A14;
+    --navy:      #0D1427;
+    --slate:     #6B7A99;
+    --cream:     #F4F1EB;
+    --cream-mid: #E8E3D8;
+    --cream-dk:  #C8BFB0;
+    --ink:       #1C1A17;
+    --font:      'Space Grotesk', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: #fff; font-family: var(--font); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--slate); }
+  section { padding: 120px 80px; }
+  .divider { height: 1px; margin: 0 80px; background: linear-gradient(90deg,transparent,rgba(51,133,255,.25),transparent); }
+  /* ── HERO ────────────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; padding: 100px 80px; position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background: radial-gradient(ellipse 60% 70% at 75% 55%,rgba(0,86,255,.13) 0%,transparent 70%),
+                radial-gradient(ellipse 30% 40% at 15% 85%,rgba(51,133,255,.05) 0%,transparent 60%);
+  }
+  .hero-text { position:relative; z-index:2; }
+  .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; margin-bottom:32px; }
+  .hero-eyebrow::before { content:''; width:32px; height:2px; background:var(--neon); box-shadow:0 0 12px rgba(51,133,255,.5); }
+  h1 { font-size:clamp(44px,5.5vw,84px); font-weight:700; line-height:1; letter-spacing:-.03em; margin-bottom:28px; }
+  h1 em { font-style:normal; color:var(--neon); text-shadow:0 0 40px rgba(51,133,255,.45); }
+  .hero-sub { font-size:20px; color:var(--lt-blue); max-width:440px; line-height:1.55; margin-bottom:48px; }
+  .hero-tag { display:inline-block; border:1px solid rgba(51,133,255,.3); border-radius:4px; padding:6px 16px; font-size:13px; color:var(--neon); letter-spacing:.08em; }
+  .hero-visual { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; }
+  .hero-visual img {
+    width:90%; max-width:520px;
+    filter: brightness(0) invert(1) drop-shadow(0 0 50px rgba(51,133,255,.6)) drop-shadow(0 0 100px rgba(0,86,255,.3));
+    animation: breathe 4s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%,100% { filter: brightness(0) invert(1) drop-shadow(0 0 50px rgba(51,133,255,.6)) drop-shadow(0 0 100px rgba(0,86,255,.3)); }
+    50%      { filter: brightness(0) invert(1) drop-shadow(0 0 70px rgba(51,133,255,.8)) drop-shadow(0 0 120px rgba(0,86,255,.45)); }
+  }
+  /* ── ILLUSTRATION SYSTEM ─────────────────────────────────────── */
+  #illustration { background:var(--navy); padding:100px 80px; }
+  #illustration h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; line-height:1.1; margin:16px 0 20px; }
+  .illo-intro { font-size:20px; color:var(--lt-blue); max-width:680px; line-height:1.6; margin-bottom:56px; }
+  .illo-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:3px;
+    background:#040408; border-radius:10px; overflow:hidden;
+    border:1px solid rgba(51,133,255,.15); margin-bottom:24px;
+  }
+  .illo-cell {
+    aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+    padding:28px; position:relative; overflow:hidden; background:#040408;
+  }
+  .illo-cell::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 80% 80% at 50% 60%,rgba(0,86,255,.14) 0%,transparent 70%);
+    opacity:0; transition:opacity .3s;
+  }
+  .illo-cell:hover::before { opacity:1; }
+  .illo-cell img {
+    width:100%; height:100%; object-fit:contain;
+    filter: brightness(0) invert(1) drop-shadow(0 0 16px rgba(51,133,255,.45));
+    transition:filter .3s;
+  }
+  .illo-cell:hover img { filter: brightness(0) invert(1) drop-shadow(0 0 32px rgba(51,133,255,.75)); }
+  .illo-note {
+    padding:20px 28px; background:rgba(51,133,255,.05); border:1px solid rgba(51,133,255,.15);
+    border-radius:8px; font-size:16px; color:var(--lt-blue); line-height:1.65;
+  }
+  .illo-note strong { color:#fff; font-weight:600; }
+  /* ── GAP MAP ─────────────────────────────────────────────────── */
+  #gap { background:var(--black); padding:100px 80px; }
+  #gap h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; margin:16px 0 56px; }
+  .gap-map { width:100%; aspect-ratio:16/9; border:1px solid rgba(255,255,255,.07); border-radius:12px; background:rgba(0,0,0,.4); position:relative; overflow:hidden; }
+  .ax { position:absolute; font-size:11px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.22); }
+  .gap-map .lh { position:absolute; top:50%; left:5%; right:5%; height:1px; background:rgba(255,255,255,.07); }
+  .gap-map .lv { position:absolute; left:50%; top:5%; bottom:5%; width:1px; background:rgba(255,255,255,.07); }
+  .comp { position:absolute; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:5px; }
+  .comp-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.28); }
+  .comp-name { font-size:10px; font-weight:500; color:rgba(255,255,255,.38); white-space:nowrap; }
+  .target { position:absolute; top:20%; right:18%; transform:translate(50%,-50%); display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .target-ring { width:80px; height:80px; border-radius:50%; border:2px solid var(--neon); box-shadow:0 0 24px rgba(51,133,255,.5),inset 0 0 24px rgba(51,133,255,.1); display:flex; align-items:center; justify-content:center; animation:pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 0 24px rgba(51,133,255,.5),inset 0 0 24px rgba(51,133,255,.1);}50%{box-shadow:0 0 40px rgba(51,133,255,.7),inset 0 0 40px rgba(51,133,255,.2);} }
+  .target-inner { width:14px; height:14px; border-radius:50%; background:var(--neon); box-shadow:0 0 20px rgba(51,133,255,.8); }
+  .target-label { font-size:12px; font-weight:700; color:var(--neon); text-align:center; line-height:1.3; text-shadow:0 0 20px rgba(51,133,255,.5); }
+  .gap-note { margin-top:32px; padding:24px 32px; border-radius:8px; font-size:17px; background:rgba(51,133,255,.06); border:1px solid rgba(51,133,255,.18); color:var(--lt-blue); line-height:1.65; }
+  .gap-note strong { color:#fff; font-weight:600; }
+  /* ── TWO TREATMENTS ──────────────────────────────────────────── */
+  .treatment-dark { background:var(--black); padding:100px 80px; border-bottom:1px solid rgba(51,133,255,.1); }
+  .treatment-light { background:var(--cream); padding:100px 80px; }
+  .tx-h { margin-bottom:56px; }
+  .treatment-dark .tx-h h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; color:#fff; margin:14px 0 20px; }
+  .treatment-light .tx-h h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; color:var(--ink); margin:14px 0 20px; }
+  .treatment-dark .tx-h p { font-size:19px; color:var(--lt-blue); max-width:640px; line-height:1.65; }
+  .treatment-light .tx-h p { font-size:19px; color:#5A5046; max-width:640px; line-height:1.65; }
+  /* dark grid */
+  .dark-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-bottom:48px; }
+  .dark-cell { background:#040408; padding:48px 32px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; min-height:260px; }
+  .dark-cell::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 70% at 50% 60%,rgba(0,86,255,.16) 0%,transparent 70%); }
+  .dark-cell img { height:200px; width:auto; position:relative; z-index:2; filter: brightness(0) invert(1) drop-shadow(0 0 32px rgba(51,133,255,.6)) drop-shadow(0 0 60px rgba(0,86,255,.25)); }
+  /* light mockups */
+  .light-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:48px; }
+  .mock-li { background:#fff; border:1px solid var(--cream-mid); border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.08); }
+  .mock-li-vis { background:var(--cream); height:220px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .mock-li-vis::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 55%,rgba(0,86,255,.07) 0%,transparent 70%); }
+  .mock-li-vis img { height:155px; position:relative; z-index:2; filter:drop-shadow(0 4px 16px rgba(0,86,255,.2)); }
+  .mock-li-txt { padding:24px; }
+  .mock-li-co { font-size:11px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--blue); margin-bottom:8px; }
+  .mock-li-hl { font-size:17px; font-weight:700; color:var(--ink); line-height:1.3; margin-bottom:8px; }
+  .mock-li-bd { font-size:13px; color:#6B6558; line-height:1.55; }
+  .mock-doc { background:#fff; border:1px solid var(--cream-mid); border-radius:8px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.08); }
+  .mock-doc-hd { background:var(--blue); padding:32px; display:flex; align-items:flex-end; justify-content:space-between; min-height:160px; position:relative; overflow:hidden; }
+  .mock-doc-hd::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 85% 50%,rgba(255,255,255,.12) 0%,transparent 60%); }
+  .mock-doc-hd-img { height:100px; position:relative; z-index:2; filter:brightness(10) saturate(0); }
+  .mock-doc-hd-txt { position:relative; z-index:2; }
+  .mock-doc-ey { font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:8px; }
+  .mock-doc-ti { font-size:22px; font-weight:700; color:#fff; line-height:1.25; }
+  .mock-doc-bd { padding:28px 32px; }
+  .mock-doc-ln { height:10px; background:var(--cream); border-radius:4px; margin-bottom:10px; }
+  .ctx-tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:32px; }
+  .ctx-tag { padding:6px 16px; border-radius:100px; font-size:13px; font-weight:500; border:1px solid; white-space:nowrap; }
+  .ctx-dk { border-color:rgba(51,133,255,.3); color:var(--lt-blue); background:rgba(51,133,255,.06); }
+  .ctx-lt { border-color:rgba(0,86,255,.2); color:#4A6C8A; background:rgba(0,86,255,.05); }
+  /* ── GULLIVER'S TRAVELS ──────────────────────────────────────── */
+  #gulliver { background:var(--navy); padding:100px 80px; }
+  #gulliver h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; margin:16px 0 24px; }
+  .gull-intro { font-size:20px; color:var(--lt-blue); max-width:680px; line-height:1.65; margin-bottom:64px; }
+  /* Hero composite — full bleed across viewport */
+  .gull-hero {
+    border-radius:0; overflow:hidden; margin-bottom:4px;
+    margin-left:-80px; margin-right:-80px;
+    border:none;
+    box-shadow:none;
+  }
+  .gull-hero img { width:100%; height:auto; display:block; }
+  .gull-hero-cap { background:#040408; padding:16px 28px; border-top:1px solid rgba(51,133,255,.1); font-size:13px; color:var(--slate); }
+  .gull-hero-cap strong { color:var(--lt-blue); }
+  /* 2×2 grid */
+  .gull-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-bottom:60px; }
+  .gull-cell { border-radius:0; overflow:hidden; position:relative; }
+  .gull-cell img { width:100%; height:auto; display:block; }
+  .gull-cell-cap { background:#040408; padding:14px 20px; font-size:12px; color:var(--slate); border-top:1px solid rgba(51,133,255,.1); }
+  .gull-cell-cap strong { color:var(--lt-blue); }
+  /* Concept statement */
+  .gull-statement {
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-bottom:60px;
+  }
+  .gull-statement h3 { font-size:32px; font-weight:700; line-height:1.2; margin-bottom:20px; }
+  .gull-statement h3 em { font-style:normal; color:var(--neon); }
+  .gull-statement p { font-size:17px; color:var(--lt-blue); line-height:1.7; margin-bottom:14px; }
+  .gull-statement p strong { color:#fff; font-weight:600; }
+  .gull-rules { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+  .g-rule { padding:28px; border:1px solid rgba(255,255,255,.06); border-radius:8px; background:rgba(0,0,0,.25); position:relative; }
+  .g-rule::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--neon),rgba(51,133,255,.2)); border-radius:8px 8px 0 0; }
+  .g-rule-n { font-size:36px; font-weight:700; color:rgba(51,133,255,.12); line-height:1; margin-bottom:10px; }
+  .g-rule-t { font-size:17px; font-weight:700; color:#fff; margin-bottom:8px; }
+  .g-rule-b { font-size:14px; color:var(--slate); line-height:1.65; }
+  .g-rule-b strong { color:var(--lt-blue); font-weight:500; }
+  /* ── RULES ───────────────────────────────────────────────────── */
+  #rules { background:var(--black); padding:100px 80px; }
+  #rules h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; margin:16px 0 60px; }
+  .rules-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:60px; }
+  .rule-card { padding:36px; border:1px solid rgba(255,255,255,.06); border-radius:10px; background:rgba(0,0,0,.3); position:relative; overflow:hidden; }
+  .rule-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--neon); box-shadow:0 0 12px rgba(51,133,255,.5); }
+  .rule-n { font-size:52px; font-weight:700; color:rgba(51,133,255,.1); line-height:1; margin-bottom:12px; }
+  .rule-t { font-size:21px; font-weight:700; color:#fff; margin-bottom:10px; }
+  .rule-b { font-size:15px; color:var(--slate); line-height:1.7; }
+  .rule-b strong { color:var(--lt-blue); font-weight:500; }
+  .palette { display:flex; border-radius:10px; overflow:hidden; height:90px; margin-bottom:8px; }
+  .p-chip { flex:1; display:flex; flex-direction:column; justify-content:flex-end; padding:10px 14px; transition:flex .3s; cursor:default; }
+  .p-chip:hover { flex:2; }
+  .p-n,.p-h { opacity:0; transition:opacity .2s; }
+  .p-n { font-size:11px; font-weight:600; white-space:nowrap; }
+  .p-h { font-size:10px; font-family:monospace; }
+  .p-chip:hover .p-n,.p-chip:hover .p-h { opacity:1; }
+  .type-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .t-card { padding:32px; border:1px solid rgba(255,255,255,.06); border-radius:8px; background:rgba(0,0,0,.3); }
+  .t-meta { font-size:11px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--slate); margin-bottom:16px; }
+  .t-disp { font-size:52px; font-weight:700; letter-spacing:-.03em; color:#fff; line-height:1; }
+  .t-body { font-size:16px; color:var(--lt-blue); line-height:1.7; margin-bottom:20px; }
+  .t-lbl { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--slate); }
+  .t-hint { margin-top:12px; font-size:12px; color:rgba(255,255,255,.18); }
+  /* ── CLOSE ───────────────────────────────────────────────────── */
+  #close { min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:100px 80px; background:#040408; position:relative; overflow:hidden; }
+  #close::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,86,255,.11) 0%,transparent 70%); }
+  .close-in { position:relative; z-index:2; max-width:720px; }
+  .close-in h2 { font-size:clamp(36px,5vw,64px); font-weight:700; letter-spacing:-.03em; line-height:1.1; margin:20px 0 28px; }
+  .close-in h2 em { font-style:normal; color:var(--neon); text-shadow:0 0 40px rgba(51,133,255,.4); }
+  .close-body { font-size:19px; color:var(--lt-blue); line-height:1.65; margin-bottom:48px; }
+  .close-tags { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+  .tag { padding:8px 20px; border:1px solid rgba(51,133,255,.25); border-radius:100px; font-size:13px; font-weight:500; color:var(--lt-blue); }
+  .tag.p { background:rgba(51,133,255,.1); border-color:rgba(51,133,255,.4); color:#fff; }
+  footer { padding:40px 80px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.05); }
+  footer span:first-child { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.25); }
+  footer span:last-child { font-size:12px; color:rgba(255,255,255,.18); }
+  @media(max-width:900px){
+    section,#hero,#gap,#gulliver,#rules,#close,.treatment-dark,.treatment-light{padding-left:32px;padding-right:32px;}
+    #hero,.dark-grid,.light-grid,.gull-statement,.rules-grid,.type-grid,.gull-rules{grid-template-columns:1fr;} .gull-grid{grid-template-columns:1fr;}
+    h1{font-size:40px;}
+    .illo-grid{grid-template-columns:repeat(2,1fr);}
+    .gull-hero{margin-left:-32px;margin-right:-32px;} .gull-hero img{height:auto;} .gull-cell img{height:auto;}
+  }
+</style>
+</head>
+<body>
+<!-- ═══════════════════════════════════ HERO ═══════════════════════════ -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow"><span class="label">Stratagentic · Visual Direction v2</span></div>
+    <h1>Bold illustration.<br>Real world.<br><em>Miniature magic.</em></h1>
+    <p class="hero-sub">A richer illustration system. Two background treatments. And a photographic concept that exists nowhere else in this category.</p>
+    <span class="hero-tag">Updated Direction · April 2026</span>
+  </div>
+  <div class="hero-visual">
+    <img src="Chill-Time.svg" alt="Beach chair — human at rest">
+  </div>
+</section>
+<div class="divider"></div>
+<!-- ═══════════════════════════ ILLUSTRATION SYSTEM ════════════════════ -->
+<section id="illustration">
+  <p class="label">The illustration system</p>
+  <h2>The characters.<br>Fun. Whimsical. Always having a great time.</h2>
+  <p class="illo-intro">A catalogue of characters for every use case. Solid blue with anchoring shadow. More character, more personality, more presence at every scale. An endearing illustration system — with a cast of characters, ready to be deployed across all surfaces and touchpoints.</p>
+  <div class="illo-grid">
+    <div class="illo-cell"><img src="Chill-Time.svg" alt="Beach chair"></div>
+    <div class="illo-cell"><img src="Summer-Collection%20n.1.svg" alt="Sofa scene"></div>
+    <div class="illo-cell"><img src="Fast-Internet.svg" alt="Globe"></div>
+    <div class="illo-cell"><img src="Planning-A-Trip.svg" alt="Traveller"></div>
+    <div class="illo-cell"><img src="Flag.svg" alt="Runner"></div>
+    <div class="illo-cell"><img src="Painting.svg" alt="Painter"></div>
+    <div class="illo-cell"><img src="Loading-Time.svg" alt="Headstand"></div>
+    <div class="illo-cell"><img src="Summer-Collection%20n.5.svg" alt="Sofa alt"></div>
+  </div>
+  <div class="illo-note">
+    <strong>Commission brief:</strong> Blue filled forms with minimal grey shadow. Characters are energetic, grounded, always composed — never stressed. Each scene implies activity without urgency. The AI work is implied through the character's posture and props, not through explicit data visualisation.
+  </div>
+</section>
+<div class="divider"></div>
+<!-- ═══════════════════════════════ GAP MAP ════════════════════════════ -->
+<section id="gap">
+  <p class="label">The market</p>
+  <h2>Where the category lives.<br>Where we go instead.</h2>
+  <div class="gap-map">
+    <div class="lh"></div><div class="lv"></div>
+    <span class="ax" style="bottom:20px;left:28px">Cold / Corporate</span>
+    <span class="ax" style="bottom:20px;right:28px">Warm / Human</span>
+    <span class="ax" style="top:20px;left:50%;transform:translateX(-50%)">Premium / Ambitious</span>
+    <span class="ax" style="bottom:40px;left:50%;transform:translateX(-50%)">Accessible / Functional</span>
+    <div class="comp" style="left:17%;top:26%"><div class="comp-dot"></div><span class="comp-name">McKinsey</span></div>
+    <div class="comp" style="left:22%;top:38%"><div class="comp-dot"></div><span class="comp-name">BCG</span></div>
+    <div class="comp" style="left:13%;top:48%"><div class="comp-dot"></div><span class="comp-name">Accenture</span></div>
+    <div class="comp" style="left:30%;top:58%"><div class="comp-dot"></div><span class="comp-name">AI startups</span></div>
+    <div class="comp" style="left:38%;top:47%"><div class="comp-dot"></div><span class="comp-name">Deloitte AI</span></div>
+    <div class="comp" style="left:26%;top:70%"><div class="comp-dot"></div><span class="comp-name">Boutiques</span></div>
+    <div class="target">
+      <div class="target-ring"><div class="target-inner"></div></div>
+      <span class="target-label">Stratagentic</span>
+    </div>
+  </div>
+  <div class="gap-note">
+    <strong>Nobody warm is ambitious. Nobody ambitious is warm.</strong> The entire peer set clusters cold/corporate — stock photography of serious people, abstract circuits, sterile gradient tech. Or over the top AI generated graphics that convey no message. The top-right quadrant is wide open, and it is precisely where a premium AI strategy firm that believes in human agency belongs.
+  </div>
+</section>
+<div class="divider"></div>
+<!-- ══════════════════════════ TWO TREATMENTS ══════════════════════════ -->
+<!-- DARK -->
+<div class="treatment-dark">
+  <div class="tx-h">
+    <p class="label">Treatment 1 of 2 · Primary</p>
+    <h2>Dark &amp; solid.<br>Premium contexts.</h2>
+    <p>Near-black, or brightest blue. The illustration glows. This is the brand boldest — campaigns, keynotes, events, advertising. Context signals: ambitious, distinctive, credible.</p>
+  </div>
+  <div class="dark-grid">
+    <div class="dark-cell"><img src="Summer-Collection%20n.1.svg" alt="Sofa"></div>
+    <div class="dark-cell"><img src="Fast-Internet.svg" alt="Globe"></div>
+    <div class="dark-cell"><img src="Chill-Time.svg" alt="Beach chair"></div>
+  </div>
+  <div class="ctx-tags">
+    <span class="ctx-tag ctx-dk">Campaign / advertising</span>
+    <span class="ctx-tag ctx-dk">Website hero</span>
+    <span class="ctx-tag ctx-dk">Keynote presentations</span>
+    <span class="ctx-tag ctx-dk">Events &amp; signage</span>
+    <span class="ctx-tag ctx-dk">Hero social posts</span>
+  </div>
+</div>
+<!-- LIGHT -->
+<div class="treatment-light">
+  <div class="tx-h">
+    <p class="label" style="color:var(--cream-dk)">Treatment 2 of 2 · Secondary</p>
+    <h2 style="color:var(--ink)">Off-white neutrality.<br>Approachable contexts.</h2>
+    <p>Warm off-white (#F4F1EB). The blue stands clean and confident against the background. For the ICP who might read full dark as too tech-heavy — consultants, ops leaders, HR executives. This says: intelligent, but firmly on your side.</p>
+  </div>
+  <div class="light-grid">
+    <div>
+      <p class="label" style="color:var(--cream-dk);margin-bottom:16px">LinkedIn social card</p>
+      <div class="mock-li">
+        <div class="mock-li-vis"><img src="output-smallpngtools%20%284%29.png" alt="Traveller"></div>
+        <div class="mock-li-txt">
+          <div class="mock-li-co">Stratagentic</div>
+          <div class="mock-li-hl">Your AI ran the process. You ran the outcome. Here's what that looked like.</div>
+          <div class="mock-li-bd">Three months in with a new AI operating model, one of our clients closed a deal they didn't even pitch for. This is what happens when your strategy runs continuously.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="label" style="color:var(--cream-dk);margin-bottom:16px">Report / document cover</p>
+      <div class="mock-doc">
+        <div class="mock-doc-hd">
+          <div class="mock-doc-hd-txt">
+            <div class="mock-doc-ey">Stratagentic · Client Report</div>
+            <div class="mock-doc-ti">AI Operating Model<br>Transformation Guide</div>
+          </div>
+          <img src="output-smallpngtools%20%286%29.png" alt="" class="mock-doc-hd-img">
+        </div>
+        <div class="mock-doc-bd">
+          <div class="mock-doc-ln"></div>
+          <div class="mock-doc-ln" style="width:85%"></div>
+          <div class="mock-doc-ln" style="width:92%"></div>
+          <div class="mock-doc-ln"></div>
+          <div class="mock-doc-ln" style="width:60%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ctx-tags">
+    <span class="ctx-tag ctx-lt">Reports &amp; proposals</span>
+    <span class="ctx-tag ctx-lt">Email newsletters</span>
+    <span class="ctx-tag ctx-lt">LinkedIn organic</span>
+    <span class="ctx-tag ctx-lt">Client deliverables</span>
+    <span class="ctx-tag ctx-lt">Product documentation</span>
+  </div>
+</div>
+<div class="divider"></div>
+<!-- ══════════════════════ GULLIVER'S TRAVELS ══════════════════════════ -->
+<section id="gulliver">
+  <p class="label">Photography &amp; visual storytelling</p>
+  <h2>Gulliver's Travels.<br>The character lives in<br>the real world.</h2>
+  <p class="gull-intro">The photography direction is not a filter, not a prism, not an editorial portrait. It is this: an illustrated character coming alive as a miniature inside a real photographic environment. The world goes on around it — boardrooms, café tables, desks, city streets. The character is already there. You just hadn't noticed.</p>
+  <!-- Hero composite: woman peering — the most arresting image -->
+  <div class="gull-hero">
+    <img src="1.jpg" alt="Woman peering over table at miniature character">
+    <div class="gull-hero-cap">
+      <strong>The defining image of this direction.</strong> A woman peers over a wooden surface at the miniature character below. Close crop. Shallow depth of field. The crossroads of reality vs the imaginary. Of opportunities. This is what stops a scroll.
+    </div>
+  </div>
+  <!-- 2×2 grid of the remaining four composites -->
+  <div class="gull-grid" style="margin-top:4px;margin-bottom:60px;">
+    <div class="gull-cell">
+      <img src="3.jpg" alt="Boardroom composite">
+      <div class="gull-cell-cap"><strong>Boardroom</strong> — the globe character sits at the far end of the table. The room is empty. It is already working.</div>
+    </div>
+    <div class="gull-cell">
+      <img src="4.jpg" alt="Street café composite">
+      <div class="gull-cell-cap"><strong>Street / café</strong> — traveller on suitcases on a rain-slicked city ledge. The world rushes past. She is composed.</div>
+    </div>
+    <div class="gull-cell">
+      <img src="2.jpg" alt="Desk composite">
+      <div class="gull-cell-cap"><strong>Desk / workspace</strong> — headstand character on a clean desk. Playful, surprising, unmistakably Stratagentic.</div>
+    </div>
+    <div class="gull-cell">
+      <img src="5.jpg" alt="Lego floor composite">
+      <div class="gull-cell-cap"><strong>Play / build</strong> — the runner navigates a Lego landscape. Scale inverted. Human logic suspended.</div>
+    </div>
+  </div>
+  <!-- Concept statement -->
+  <div class="gull-statement">
+    <div>
+      <h3>The character is <em>in your world</em>.<br>Not in a screen.</h3>
+      <p>Every other AI brand puts its imagery inside screens and interfaces. We put our character <strong>in physical space</strong> — on a desk, on a café table, in a conference room. Real photography. Real environments. Shallow depth of field. Macro or tight crop.</p>
+      <p>The result is <strong>intimacy and surprise</strong>. You have to look closely. The AI is already there — you just hadn't noticed it. A unique proposition in the worlds of consulting, tech, or strategy communications.</p>
+    </div>
+    <div class="gull-rules">
+      <div class="g-rule" style="margin-bottom:0">
+        <div class="g-rule-n">01</div>
+        <div class="g-rule-t">Physical surfaces only</div>
+        <div class="g-rule-b">Never on a screen. Never in a UI. Always on a <strong>real material</strong> — wood, paper, fabric, stone. The physicality is what makes it surprising.</div>
+      </div>
+      <div class="g-rule" style="margin-bottom:0">
+        <div class="g-rule-n">02</div>
+        <div class="g-rule-t">Scale contrast is the concept</div>
+        <div class="g-rule-b">The miniature scale is <strong>the idea</strong>. AI part of the world. The work is happening all around you. You just have to look.</div>
+      </div>
+      <div class="g-rule" style="margin-bottom:0">
+        <div class="g-rule-n">03</div>
+        <div class="g-rule-t">The shadow is non-negotiable</div>
+        <div class="g-rule-b">The character casts a shadow onto the surface. <strong>It marks the character as almost-real</strong> — intelligence in physical form, not a toy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<!-- ═══════════════════════════ FOUR RULES ═════════════════════════════ -->
+<section id="rules">
+  <p class="label">The governing principles</p>
+  <h2>Guidelines</h2>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-n">01</div>
+      <div class="rule-t">Filled. Bold. In character.</div>
+      <div class="rule-b">The new illustration set — filled forms with tonal shadow, strong personality — is the one to commission and deploy. <strong>When in doubt, go smaller.</strong> Expressive drawing style.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">02</div>
+      <div class="rule-t">Choose the background aimed at audience</div>
+      <div class="rule-b">Dark, or sky blue signals premium ambition. Off-white (#F4F1EB) signals approachable intelligence. <strong>Both are correct.</strong> Neither is a compromise. Never mix them in one composition. Never use pure white or pure black.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">03</div>
+      <div class="rule-t">The human is always at ease.</div>
+      <div class="rule-b">No stressed characters. No urgency. No reactive postures. <strong>The entire promise of Stratagentic is that your organisation can breathe while the AI runs.</strong> If an image shows a human reacting to technology, it breaks the brand truth.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-n">04</div>
+      <div class="rule-t">Photography = character in your world.</div>
+      <div class="rule-b">No prisms. No portraiture. <strong>The only approved photographic direction is Gulliver's Travels</strong> — the illustration placed as a miniature in real physical environments, with a shadow.</div>
+    </div>
+  </div>
+  <!-- Palette -->
+  <div class="palette" style="margin-top:60px;margin-bottom:8px;">
+    <div class="p-chip" style="background:#0A0A14;flex:3;"><span class="p-n" style="color:#fff">Deep Black</span><span class="p-h" style="color:#fff">#0A0A14</span></div>
+    <div class="p-chip" style="background:#0056FF;flex:2;"><span class="p-n" style="color:#fff">Blue</span><span class="p-h" style="color:#fff">#0056FF</span></div>
+    <div class="p-chip" style="background:#3385FF;flex:1.5;"><span class="p-n" style="color:#fff">Neon</span><span class="p-h" style="color:#fff">#3385FF</span></div>
+    <div class="p-chip" style="background:#F4F1EB;flex:2;"><span class="p-n" style="color:#1C1A17">Off-White</span><span class="p-h" style="color:#1C1A17">#F4F1EB</span></div>
+    <div class="p-chip" style="background:#FFFFFF;flex:1;"><span class="p-n" style="color:#1C1A17">White</span><span class="p-h" style="color:#1C1A17">#FFF</span></div>
+  </div>
+  <p class="label" style="margin-bottom:48px">Hover to reveal · Five colours · Total restraint</p>
+  <!-- Type -->
+  <div class="type-grid">
+    <div class="t-card">
+      <div class="t-meta">Display · Space Grotesk 700 · −3% tracking</div>
+      <div class="t-disp">Work<br>smarter.</div>
+      <div class="t-hint">Campaign headlines and hero moments only</div>
+    </div>
+    <div class="t-card">
+      <div class="t-meta">Body · Space Grotesk 400 · 1.7 leading</div>
+      <div class="t-body">We design the AI operating model that lets your organisation think, decide, and act faster — with or without you in the room. Not automation. Delegation at scale.</div>
+      <div class="t-lbl">LABEL · 0.2EM TRACKING · SLATE</div>
+      <div class="t-hint">All body, caption, and label contexts</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+<!-- ════════════════════════════ CLOSE ═════════════════════════════════ -->
+<section id="close">
+  <div class="close-in">
+    <p class="label">The position</p>
+    <h2>Warm. Bold.<br><em>Genuinely unlike<br>anyone else in the room.</em></h2>
+    <p class="close-body">Three things: The illustration system is filled, bold, and in character. There are two deliberate background treatments, each with its own job. And the photographic direction - real composites of the character in the physical world - is unique. This is the identity.</p>
+    <div class="close-tags">
+      <span class="tag p">Filled &amp; bold illustrations</span>
+      <span class="tag">Dark ground: premium</span>
+      <span class="tag">Off-white: approachable</span>
+      <span class="tag">Macro miniature photography</span>
+      <span class="tag">Space Grotesk</span>
+      <span class="tag">Human always at ease</span>
+    </div>
+  </div>
+</section>
+<footer>
+  <span>Stratagentic</span>
+  <span>Visual Direction v2 · April 2026 · Confidential</span>
+</footer>
+</body>
+</html>

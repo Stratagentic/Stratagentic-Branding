@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Stratagentic Visual Direction"
+version = "1.0.0"
+id = "artifacts/stratagentic"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25290
+
+[services.development]
+run = "pnpm --filter @workspace/stratagentic run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/stratagentic", "run", "build" ]
+publicDir = "artifacts/stratagentic/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25290"
+BASE_PATH = "/"
