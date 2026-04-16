@@ -101,9 +101,18 @@
   .target-label { font-size:12px; font-weight:700; color:var(--neon); text-align:center; line-height:1.3; text-shadow:0 0 20px rgba(51,133,255,.5); }
   .gap-note { margin-top:32px; padding:24px 32px; border-radius:8px; font-size:17px; background:rgba(51,133,255,.06); border:1px solid rgba(51,133,255,.18); color:var(--lt-blue); line-height:1.65; }
   .gap-note strong { color:#fff; font-weight:600; }
-  /* ── TWO TREATMENTS ──────────────────────────────────────────── */
-  .treatment-dark { background:var(--black); padding:100px 80px; border-bottom:1px solid rgba(51,133,255,.1); }
+  /* ── THREE TREATMENTS ────────────────────────────────────────── */
+  .treatment-blue  { background:#1D48E6; padding:100px 80px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .treatment-dark  { background:var(--black); padding:100px 80px; border-bottom:1px solid rgba(51,133,255,.1); }
   .treatment-light { background:var(--cream); padding:100px 80px; }
+  /* blue treatment */
+  .treatment-blue .tx-h h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; color:#fff; margin:14px 0 20px; }
+  .treatment-blue .tx-h p  { font-size:19px; color:rgba(255,255,255,.85); max-width:640px; line-height:1.65; }
+  .blue-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:4px; margin-bottom:48px; }
+  .blue-cell { background:rgba(0,0,0,.12); padding:48px 32px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; min-height:260px; }
+  .blue-cell::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 70% at 50% 60%,rgba(255,255,255,.08) 0%,transparent 70%); }
+  .blue-cell img { height:200px; width:auto; position:relative; z-index:2; filter:brightness(0) invert(1) drop-shadow(0 0 32px rgba(255,255,255,.5)) drop-shadow(0 0 60px rgba(255,255,255,.2)); }
+  .ctx-blue { border-color:rgba(255,255,255,.35)!important; color:#fff!important; background:rgba(255,255,255,.12)!important; }
   .tx-h { margin-bottom:56px; }
   .treatment-dark .tx-h h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; color:#fff; margin:14px 0 20px; }
   .treatment-light .tx-h h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; color:var(--ink); margin:14px 0 20px; }
@@ -280,31 +289,31 @@
   </div>
 </section>
 <div class="divider"></div>
-<!-- ══════════════════════════ TWO TREATMENTS ══════════════════════════ -->
-<!-- DARK -->
-<div class="treatment-dark">
+<!-- ══════════════════════════ THREE TREATMENTS ══════════════════════════ -->
+<!-- BLUE -->
+<div class="treatment-blue">
   <div class="tx-h">
-    <p class="label">Treatment 1 of 2 · Primary</p>
-    <h2>Dark &amp; solid.<br>Premium contexts.</h2>
-    <p>Near-black, or brightest blue. The illustration glows. This is the brand boldest — campaigns, keynotes, events, advertising. Context signals: ambitious, distinctive, credible.</p>
+    <p class="label" style="color:rgba(255,255,255,.65)">Treatment 1 of 3 · Primary</p>
+    <h2>Solid blue.<br>Bold, confident contexts.</h2>
+    <p>Electric blue (#1D48E6). The illustration glows white against the field. This is the brand at its most energetic — digital-first, scroll-stopping, unmistakably Stratagentic. Context signals: forward, dynamic, human.</p>
   </div>
-  <div class="dark-grid">
-    <div class="dark-cell"><img src="Summer-Collection%20n.1.svg" alt="Sofa"></div>
-    <div class="dark-cell"><img src="Fast-Internet.svg" alt="Globe"></div>
-    <div class="dark-cell"><img src="Chill-Time.svg" alt="Beach chair"></div>
+  <div class="blue-grid">
+    <div class="blue-cell"><img src="Summer-Collection%20n.1.svg" alt="Sofa"></div>
+    <div class="blue-cell"><img src="Fast-Internet.svg" alt="Globe"></div>
+    <div class="blue-cell"><img src="Chill-Time.svg" alt="Beach chair"></div>
   </div>
   <div class="ctx-tags">
-    <span class="ctx-tag ctx-dk">Campaign / advertising</span>
-    <span class="ctx-tag ctx-dk">Website hero</span>
-    <span class="ctx-tag ctx-dk">Keynote presentations</span>
-    <span class="ctx-tag ctx-dk">Events &amp; signage</span>
-    <span class="ctx-tag ctx-dk">Hero social posts</span>
+    <span class="ctx-tag ctx-blue">Social media</span>
+    <span class="ctx-tag ctx-blue">Digital advertising</span>
+    <span class="ctx-tag ctx-blue">Website sections</span>
+    <span class="ctx-tag ctx-blue">Email headers</span>
+    <span class="ctx-tag ctx-blue">Presentation backgrounds</span>
   </div>
 </div>
 <!-- LIGHT -->
 <div class="treatment-light">
   <div class="tx-h">
-    <p class="label" style="color:var(--cream-dk)">Treatment 2 of 2 · Secondary</p>
+    <p class="label" style="color:var(--cream-dk)">Treatment 2 of 3 · Secondary</p>
     <h2 style="color:var(--ink)">Off-white neutrality.<br>Approachable contexts.</h2>
     <p>Warm off-white (#F4F1EB). The blue stands clean and confident against the background. For the ICP who might read full dark as too tech-heavy — consultants, ops leaders, HR executives. This says: intelligent, but firmly on your side.</p>
   </div>
@@ -346,6 +355,26 @@
     <span class="ctx-tag ctx-lt">LinkedIn organic</span>
     <span class="ctx-tag ctx-lt">Client deliverables</span>
     <span class="ctx-tag ctx-lt">Product documentation</span>
+  </div>
+</div>
+<!-- DARK -->
+<div class="treatment-dark">
+  <div class="tx-h">
+    <p class="label">Treatment 3 of 3 · Tertiary</p>
+    <h2>Dark &amp; solid.<br>Premium contexts.</h2>
+    <p>Near-black, or brightest blue. The illustration glows. This is the brand boldest — campaigns, keynotes, events, advertising. Context signals: ambitious, distinctive, credible.</p>
+  </div>
+  <div class="dark-grid">
+    <div class="dark-cell"><img src="Summer-Collection%20n.1.svg" alt="Sofa"></div>
+    <div class="dark-cell"><img src="Fast-Internet.svg" alt="Globe"></div>
+    <div class="dark-cell"><img src="Chill-Time.svg" alt="Beach chair"></div>
+  </div>
+  <div class="ctx-tags">
+    <span class="ctx-tag ctx-dk">Campaign / advertising</span>
+    <span class="ctx-tag ctx-dk">Website hero</span>
+    <span class="ctx-tag ctx-dk">Keynote presentations</span>
+    <span class="ctx-tag ctx-dk">Events &amp; signage</span>
+    <span class="ctx-tag ctx-dk">Hero social posts</span>
   </div>
 </div>
 <div class="divider"></div>
