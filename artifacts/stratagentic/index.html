@@ -36,6 +36,7 @@
                 radial-gradient(ellipse 30% 40% at 15% 85%,rgba(51,133,255,.05) 0%,transparent 60%);
   }
   .hero-text { position:relative; z-index:2; }
+  .hero-logo { position:absolute; top:40px; left:80px; z-index:10; height:36px; width:auto; }
   .hero-eyebrow { display:inline-flex; align-items:center; gap:10px; margin-bottom:32px; }
   .hero-eyebrow::before { content:''; width:32px; height:2px; background:var(--neon); box-shadow:0 0 12px rgba(51,133,255,.5); }
   h1 { font-size:clamp(44px,5.5vw,84px); font-weight:700; line-height:1; letter-spacing:-.03em; margin-bottom:28px; }
@@ -221,6 +222,7 @@
 <body>
 <!-- ═══════════════════════════════════ HERO ═══════════════════════════ -->
 <section id="hero">
+  <img src="logo-white.png" alt="Stratagentic" class="hero-logo">
   <div class="hero-text">
     <div class="hero-eyebrow"><span class="label">Stratagentic · Visual Direction v2</span></div>
     <h1>Bold illustration.<br>Real world.<br><em>Miniature magic.</em></h1>
