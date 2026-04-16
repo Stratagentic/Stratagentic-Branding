@@ -53,13 +53,14 @@
     50%      { filter: brightness(0) invert(1) drop-shadow(0 0 70px rgba(51,133,255,.8)) drop-shadow(0 0 120px rgba(0,86,255,.45)); }
   }
   /* ── ILLUSTRATION SYSTEM ─────────────────────────────────────── */
-  #illustration { background:var(--navy); padding:100px 80px; }
+  #illustration { background:#1D48E6; padding:100px 80px; }
+  #illustration .label { color:rgba(255,255,255,.65); }
   #illustration h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; line-height:1.1; margin:16px 0 20px; }
-  .illo-intro { font-size:20px; color:var(--lt-blue); max-width:680px; line-height:1.6; margin-bottom:56px; }
+  .illo-intro { font-size:20px; color:rgba(255,255,255,.85); max-width:680px; line-height:1.6; margin-bottom:56px; }
   .illo-grid {
     display:grid; grid-template-columns:repeat(4,1fr); gap:3px;
-    background:#040408; border-radius:10px; overflow:hidden;
-    border:1px solid rgba(51,133,255,.15); margin-bottom:24px;
+    background:#1D48E6; border-radius:10px; overflow:hidden;
+    border:1px solid rgba(255,255,255,.2); margin-bottom:24px;
   }
   .illo-cell {
     aspect-ratio:1; display:flex; align-items:center; justify-content:center;
@@ -78,8 +79,8 @@
   }
   .illo-cell:hover img { filter: brightness(0) invert(1) drop-shadow(0 0 32px rgba(51,133,255,.75)); }
   .illo-note {
-    padding:20px 28px; background:rgba(51,133,255,.05); border:1px solid rgba(51,133,255,.15);
-    border-radius:8px; font-size:16px; color:var(--lt-blue); line-height:1.65;
+    padding:20px 28px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+    border-radius:8px; font-size:16px; color:rgba(255,255,255,.85); line-height:1.65;
   }
   .illo-note strong { color:#fff; font-weight:600; }
   /* ── GAP MAP ─────────────────────────────────────────────────── */
@@ -136,9 +137,10 @@
   .ctx-dk { border-color:rgba(51,133,255,.3); color:var(--lt-blue); background:rgba(51,133,255,.06); }
   .ctx-lt { border-color:rgba(0,86,255,.2); color:#4A6C8A; background:rgba(0,86,255,.05); }
   /* ── GULLIVER'S TRAVELS ──────────────────────────────────────── */
-  #gulliver { background:var(--navy); padding:100px 80px; }
+  #gulliver { background:#1D48E6; padding:100px 80px; }
+  #gulliver .label { color:rgba(255,255,255,.65); }
   #gulliver h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; margin:16px 0 24px; }
-  .gull-intro { font-size:20px; color:var(--lt-blue); max-width:680px; line-height:1.65; margin-bottom:64px; }
+  .gull-intro { font-size:20px; color:rgba(255,255,255,.85); max-width:680px; line-height:1.65; margin-bottom:64px; }
   /* Hero composite — full bleed across viewport */
   .gull-hero {
     border-radius:0; overflow:hidden; margin-bottom:4px;
@@ -147,29 +149,29 @@
     box-shadow:none;
   }
   .gull-hero img { width:100%; height:auto; display:block; }
-  .gull-hero-cap { background:#040408; padding:16px 28px; border-top:1px solid rgba(51,133,255,.1); font-size:13px; color:var(--slate); }
-  .gull-hero-cap strong { color:var(--lt-blue); }
+  .gull-hero-cap { background:rgba(0,0,0,.45); padding:16px 28px; border-top:1px solid rgba(255,255,255,.1); font-size:13px; color:rgba(255,255,255,.8); }
+  .gull-hero-cap strong { color:#fff; }
   /* 2×2 grid */
-  .gull-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-bottom:60px; }
+  .gull-grid { display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-bottom:60px; margin-left:-80px; margin-right:-80px; }
   .gull-cell { border-radius:0; overflow:hidden; position:relative; }
   .gull-cell img { width:100%; height:auto; display:block; }
-  .gull-cell-cap { background:#040408; padding:14px 20px; font-size:12px; color:var(--slate); border-top:1px solid rgba(51,133,255,.1); }
-  .gull-cell-cap strong { color:var(--lt-blue); }
+  .gull-cell-cap { background:rgba(0,0,0,.45); padding:14px 20px; font-size:12px; color:rgba(255,255,255,.8); border-top:1px solid rgba(255,255,255,.1); }
+  .gull-cell-cap strong { color:#fff; }
   /* Concept statement */
   .gull-statement {
     display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-bottom:60px;
   }
   .gull-statement h3 { font-size:32px; font-weight:700; line-height:1.2; margin-bottom:20px; }
   .gull-statement h3 em { font-style:normal; color:var(--neon); }
-  .gull-statement p { font-size:17px; color:var(--lt-blue); line-height:1.7; margin-bottom:14px; }
+  .gull-statement p { font-size:17px; color:rgba(255,255,255,.85); line-height:1.7; margin-bottom:14px; }
   .gull-statement p strong { color:#fff; font-weight:600; }
   .gull-rules { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
   .g-rule { padding:28px; border:1px solid rgba(255,255,255,.06); border-radius:8px; background:rgba(0,0,0,.25); position:relative; }
   .g-rule::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--neon),rgba(51,133,255,.2)); border-radius:8px 8px 0 0; }
-  .g-rule-n { font-size:36px; font-weight:700; color:rgba(51,133,255,.12); line-height:1; margin-bottom:10px; }
+  .g-rule-n { font-size:36px; font-weight:700; color:rgba(255,255,255,.15); line-height:1; margin-bottom:10px; }
   .g-rule-t { font-size:17px; font-weight:700; color:#fff; margin-bottom:8px; }
-  .g-rule-b { font-size:14px; color:var(--slate); line-height:1.65; }
-  .g-rule-b strong { color:var(--lt-blue); font-weight:500; }
+  .g-rule-b { font-size:14px; color:rgba(255,255,255,.7); line-height:1.65; }
+  .g-rule-b strong { color:#fff; font-weight:500; }
   /* ── RULES ───────────────────────────────────────────────────── */
   #rules { background:var(--black); padding:100px 80px; }
   #rules h2 { font-size:48px; font-weight:700; letter-spacing:-.02em; margin:16px 0 60px; }
@@ -212,7 +214,7 @@
     #hero,.dark-grid,.light-grid,.gull-statement,.rules-grid,.type-grid,.gull-rules{grid-template-columns:1fr;} .gull-grid{grid-template-columns:1fr;}
     h1{font-size:40px;}
     .illo-grid{grid-template-columns:repeat(2,1fr);}
-    .gull-hero{margin-left:-32px;margin-right:-32px;} .gull-hero img{height:auto;} .gull-cell img{height:auto;}
+    .gull-hero,.gull-grid{margin-left:-32px;margin-right:-32px;} .gull-hero img{height:auto;} .gull-cell img{height:auto;}
   }
 </style>
 </head>
